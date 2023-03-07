@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
 
-part 'exa_theme_colors.dart';
+part 'poc_theme_colors.dart';
 
-ThemeData get lightTheme => ThemeData(
-      colorScheme: exaColorSCheme,
-      elevatedButtonTheme: elevatedButtonTheme,
-    );
+class PocThemes {
+  ThemeData get lightTheme => ThemeData(
+        colorScheme: pocColorSCheme,
+        elevatedButtonTheme: elevatedButtonTheme,
+      );
 
-ThemeData get darkTheme => ThemeData.dark();
+  ThemeData get darkTheme => ThemeData.dark();
 
-ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return _ExaThemeColors.exaWhite;
-          }
-          return _ExaThemeColors.exaWhite;
-        }),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (states) {
-            if (states.contains(MaterialState.pressed)) {
-              return _ExaThemeColors.exaDarkBlue;
-            } else if (states.contains(MaterialState.disabled)) {
-              return _ExaThemeColors.exaLightBlue;
+  ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.disabled)) {
+              return _PocThemeColors.pocWhite;
             }
+            return _PocThemeColors.pocWhite;
+          }),
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (states) {
+              if (states.contains(MaterialState.pressed)) {
+                return _PocThemeColors.pocDarkBlue;
+              } else if (states.contains(MaterialState.disabled)) {
+                return _PocThemeColors.pocLightBlue;
+              }
 
-            return _ExaThemeColors.exaBlue;
-          },
+              return _PocThemeColors.pocBlue;
+            },
+          ),
+          shape: MaterialStateProperty.resolveWith((states) {
+            return RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            );
+          }),
         ),
-        shape: MaterialStateProperty.resolveWith((states) {
-          return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          );
-        }),
-      ),
-    );
+      );
+}

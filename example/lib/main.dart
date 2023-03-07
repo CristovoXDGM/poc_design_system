@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:poc_design_system/core/components/buttons/exa_icon_button.dart';
-import 'package:poc_design_system/core/theme/themes.dart';
+
+import 'package:pocdesignsystem/pocdesignsystem.dart';
+import 'package:widgetbook/widgetbook.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +13,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: lightTheme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return Widgetbook.material(
+      appInfo: AppInfo(name: 'Exa WidgetBook'),
+      categories: [
+        WidgetbookCategory(name: 'Buttons', widgets: [
+          WidgetbookComponent(
+            name: 'ExaIconButton',
+            useCases: [
+              WidgetbookUseCase(
+                name: 'Temp',
+                builder: (context) => const MyHomePage(title: 'title'),
+              )
+            ],
+          ),
+        ]),
+      ],
+      themes: [
+        WidgetbookTheme(
+          name: 'Light theme',
+          data: PocThemes().lightTheme,
+        )
+      ],
     );
   }
 }
@@ -61,6 +79,23 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            ExaPrimaryButton(
+              onPressed: () {},
+              text: 'Cristovão',
+            ),
+            const SizedBox(height: 8),
+            ExaPrimaryButton(
+              onPressed: () {},
+              prefixIcon: const Icon(Icons.save),
+              iconText: const Icon(Icons.circle),
+              sufixIcon: const Icon(Icons.chevron_right),
+              text: 'Cristovão',
+            ),
+            const SizedBox(height: 8),
+            ExaSecondaryButton(
+              onPressed: () {},
+              text: 'Cristovão',
             ),
           ],
         ),
